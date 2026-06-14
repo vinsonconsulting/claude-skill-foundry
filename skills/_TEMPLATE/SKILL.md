@@ -5,6 +5,8 @@ description: Replace this. One or two sentences on what the skill does and the
   concrete triggers, not vague capabilities.
 ---
 
+<!-- Optional sibling dirs: scripts/ (helpers), references/ (on-demand docs), assets/ (output files), evals/ (test cases). Remove this line. -->
+
 # Replace with skill name
 
 Short statement of what running this skill accomplishes.

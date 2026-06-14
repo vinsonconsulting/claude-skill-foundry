@@ -33,6 +33,10 @@ NAME_RE = re.compile(
 REF_RE = re.compile(
     r"(?:\]\(|`)((?:scripts|reference|references|assets|data)/[^)\s`]+)"
 )
+TRIGGER_RE = re.compile(
+    r"\b(use\s+(this\s+|the\s+)?(skill\s+)?(when|for)|whenever|when\s+the\s+user|when\s+you\s+need|trigger)\b",
+    re.IGNORECASE,
+)
 
 
 def lint_skill(path: Path) -> tuple[list[str], list[str]]:
@@ -57,6 +61,8 @@ def lint_skill(path: Path) -> tuple[list[str], list[str]]:
         warns.append(f"`name` ({name!r}) does not match folder ({folder!r})")
     if desc and len(desc) > DESCRIPTION_MAX:
         warns.append(f"description is {len(desc)} chars (> {DESCRIPTION_MAX})")
+    if desc and not TRIGGER_RE.search(desc):
+        warns.append("description may lack explicit trigger language (e.g. \"Use when ...\")")
 
     body = text.split("---", 2)[-1] if has_fm else text
     for m in REF_RE.finditer(body):
