@@ -1,0 +1,86 @@
+{
+  "skill_name": "ratatui",
+  "evals": [
+    {
+      "id": "constrained-layout",
+      "prompt": "Split the frame into a 3-line header, a filling body, and a 1-line status bar; body split into a fixed 30-cell sidebar and a filling main area. Current Layout API.",
+      "rubric": [
+        "Layout::vertical/horizontal + .areas() destructuring",
+        "Length(3)/Fill(1)/Length(1); sidebar Length(30)+Fill(1)",
+        "no SegmentSize/StretchLast/Proportional",
+        "renders in terminal.draw closure"
+      ]
+    },
+    {
+      "id": "stateful-scrollable-list",
+      "prompt": "Scrollable, selectable List backed by ListState with j/k nav and a Scrollbar driven by ScrollbarState.",
+      "rubric": [
+        "ListState in App, not widget",
+        "render_stateful_widget",
+        "select_next/previous update state",
+        "ScrollbarState kept in sync",
+        "filters KeyEventKind::Press"
+      ]
+    },
+    {
+      "id": "scrollback-model",
+      "prompt": "Implement a wrapping, auto-following chat scrollback that the user can scroll up to pin. SYNCHRONOUS (no async): a VecDeque<Line> model + offset + visible-slice render.",
+      "rubric": [
+        "owns VecDeque/Vec<Line> + tracked offset, NOT a giant Buffer",
+        "renders only the visible slice",
+        "auto-follows bottom, freezes when scrolled up",
+        "drives ScrollbarState from offset+len",
+        "no off-screen u16 buffer overflow"
+      ]
+    },
+    {
+      "id": "streaming-viewport",
+      "prompt": "Feed the scrollback model from streaming deltas over a tokio mpsc channel; redraw on a render tick, not per delta.",
+      "rubric": [
+        "tokio mpsc + Event/Action enum",
+        "select! multiplexing input/stream/tick",
+        "reuses the scrollback model",
+        "redraws on render tick"
+      ]
+    },
+    {
+      "id": "custom-stateful-widget",
+      "prompt": "Author a custom StatefulWidget and render it, choosing the right trait and reference idiom.",
+      "rubric": [
+        "StatefulWidget (or Widget for &T) per current guidance",
+        "correct render signature",
+        "writes via Line/Span/set_*, not raw escapes",
+        "state passed via render_stateful_widget",
+        "no unstable WidgetRef without noting the feature flag"
+      ]
+    },
+    {
+      "id": "text-wrapping-unicode",
+      "prompt": "Render a paragraph containing CJK characters and emoji that wraps correctly at a given width and truncates with an ellipsis on one line.",
+      "rubric": [
+        "uses display width (unicode-width), not char/byte count",
+        "Paragraph Wrap or manual width-aware wrapping",
+        "truncation respects grapheme boundaries",
+        "alignment correct under wide chars"
+      ]
+    },
+    {
+      "id": "lifecycle-hygiene",
+      "prompt": "Set up/tear down so the terminal always restores, including on panic, using the current API + color-eyre.",
+      "rubric": [
+        "ratatui::run() or init()/restore()",
+        "color_eyre::install()",
+        "relies on init() panic hook or sets one that restores",
+        "no manual enable_raw_mode/EnterAlternateScreen",
+        "restores before printing errors"
+      ]
+    },
+    {
+      "id": "reject-stale-patterns",
+      "prompt": "Regression check: generated code must not contain tui-rs-era patterns.",
+      "rubric": [
+        "grep finds none of: enable_raw_mode (hand-rolled), EnterAlternateScreen (manual), StretchLast, SegmentSize, Constraint::Proportional, the cassowary crate (must be kasuari), bare Alignment for layout (use HorizontalAlignment)"
+      ]
+    }
+  ]
+}

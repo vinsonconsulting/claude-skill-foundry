@@ -30,6 +30,12 @@ specific about when to use it, not just what it does.
 | --- | --- | --- |
 | `env-doctor` | Diagnose a broken local development environment by checking language runtimes, package managers, environment variables, and common path or version mismatches. Use when a project will not build, run, or install dependencies and the cause is unclear. | `skills/dev/env-doctor/` |
 
+### tui
+
+| Skill | Description | Path |
+| --- | --- | --- |
+| `ratatui` | Use this skill for any task involving a Rust terminal/text user interface (TUI) built with Ratatui (or crossterm) — creating one, or debugging, fixing, testing, or extending an existing one. Covers: scaffolding the initial `main`/render loop and terminal setup; fixing teardown so a panic or crash doesn't leave the terminal in raw mode / broken; laying out panels, sidebars, status bars, dashboards, and popups with Layout/Constraint; wiring widgets like List, Table, Gauge, Chart, Scrollbar (including selection/scroll state that won't move); styling, text wrapping, and Unicode width issues; streaming LLM/async output into a terminal; and unit-testing rendered output without a real terminal. Triggers on "rust + terminal app/UI/dashboard", ratatui, crossterm. Writes current Ratatui 0.30+ code, not stale tui-rs patterns. Not for: Go TUIs (Bubble Tea), Python TUIs (Textual), non-interactive CLI output or progress bars, web/browser UIs, image-to-ASCII art (ascii/textmode), or tmux/agent-session orchestration. | `skills/tui/ratatui/` |
+
 ### writing
 
 | Skill | Description | Path |
