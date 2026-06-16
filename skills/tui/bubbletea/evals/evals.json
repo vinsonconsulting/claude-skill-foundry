@@ -1,0 +1,88 @@
+{
+  "skill_name": "bubbletea",
+  "evals": [
+    {
+      "id": "constrained-layout",
+      "prompt": "Build a Bubble Tea v2 view: a fixed 30-cell sidebar plus a flexible main pane filling the rest of the terminal width, with a header and footer. Use Lip Gloss.",
+      "rubric": [
+        "JoinHorizontal/JoinVertical (or Place) string composition",
+        "sizes come from tea.WindowSizeMsg, not hardcoded",
+        "measures with lipgloss.Width/Size, not len()",
+        "main width = total width - sidebar width",
+        "no invented constraint/flex solver"
+      ]
+    },
+    {
+      "id": "stateful-scrollable-list",
+      "prompt": "Build a selectable, scrollable list using the bubbles list component, with key navigation and a selection action.",
+      "rubric": [
+        "imports charm.land/bubbles/v2/list",
+        "nests list.Model in the parent model",
+        "m.list, cmd = m.list.Update(msg) then returns the reassigned model",
+        "forwards tea.WindowSizeMsg down to the list",
+        "no hand-rolled scrolling when list suffices; no list mutation outside Update"
+      ]
+    },
+    {
+      "id": "scrollback-model",
+      "prompt": "Build a scrollback log view that auto-follows the bottom but pins when the user scrolls up. Use the bubbles viewport.",
+      "rubric": [
+        "viewport.Model created with viewport.New(WithWidth/WithHeight)",
+        "checks AtBottom() before deciding to follow",
+        "GotoBottom() only when following",
+        "SetContent on update",
+        "no unconditional GotoBottom; no manual ring buffer; no v1 high-performance-render / YPosition path"
+      ]
+    },
+    {
+      "id": "streaming-viewport",
+      "prompt": "Stream tokens from a goroutine into a v2 viewport: append and re-render, auto-following the bottom.",
+      "rubric": [
+        "goroutine calls p.Send(deltaMsg) per delta",
+        "stream kicked off via a captured *tea.Program (or a Cmd)",
+        "Update appends + viewport.SetContent",
+        "GotoBottom gated on AtBottom()/a follow flag",
+        "never mutates the model or calls Update/viewport.Update from the goroutine; no blocking in Update"
+      ]
+    },
+    {
+      "id": "custom-stateful-widget",
+      "prompt": "Author a custom v2 component that follows Model/Update/View and nests inside a parent model.",
+      "rubric": [
+        "New() constructor + a Model whose Update returns (Model, tea.Cmd)",
+        "View() returns a string for use as a child",
+        "parent routes msgs/sizes down and batches cmds up",
+        "side effects go through a Cmd, not direct IO in Update",
+        "no package-global mutable state"
+      ]
+    },
+    {
+      "id": "text-wrapping-unicode",
+      "prompt": "Truncate and wrap a string containing CJK characters and emoji to a fixed column width without breaking the layout or ANSI escapes.",
+      "rubric": [
+        "uses x/ansi (Truncate/Wrap/Hardwrap) or lipgloss width helpers",
+        "measures with ansi.StringWidth/lipgloss.Width over whole strings",
+        "accounts for wide characters / graphemes",
+        "no len() or rune count for width; no byte-index slicing; does not break ANSI escapes"
+      ]
+    },
+    {
+      "id": "lifecycle-hygiene",
+      "prompt": "Set up a v2 program with alt-screen and mouse enabled, with Run() error handling and clean terminal restore on panic.",
+      "rubric": [
+        "tea.NewProgram + p.Run() with the returned error checked",
+        "alt-screen and mouse set as tea.View fields (AltScreen, MouseMode)",
+        "relies on the runtime's panic recovery / handles ErrProgramPanic",
+        "os.Exit(1) on error",
+        "no tea.WithAltScreen()/WithMouseCellMotion() options; no manual enable-raw-mode juggling"
+      ]
+    },
+    {
+      "id": "reject-stale-patterns",
+      "prompt": "Regression check: generated v2 code must not contain v1 / github.com-beta patterns.",
+      "rubric": [
+        "grep finds none of: a github.com/charmbracelet/bubbletea OR github.com/charmbracelet/lipgloss OR github.com/charmbracelet/bubbles import (the whole framework stack is charm.land/*/v2 — no mixing), positional viewport.New(w, h) instead of viewport.New(viewport.WithWidth(w), viewport.WithHeight(h)), View() string, tea.WithAltScreen()/WithMouseCellMotion() options, a KeyMsg struct using .Type/.Runes, space matched as \" \", a MouseMsg struct using .Action/.Button, model mutation from a goroutine/View/Cmd body, len() for display width, or tea.Listen (Init() tea.Cmd is correct v2 and must NOT be flagged)"
+      ]
+    }
+  ]
+}
