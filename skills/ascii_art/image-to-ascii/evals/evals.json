@@ -1,0 +1,46 @@
+{
+  "skill_name": "image-to-ascii",
+  "notes": "Triggering is the dominant failure mode. should_trigger MUST fire; should_not_trigger are near-misses that must NOT pull this in (browser/React, the textmode.js library, or text-banner tasks); evals run scripts/image_to_ascii.py and verify the output shape.",
+  "should_trigger": [
+    "Make some ASCII art of a cat.",
+    "Convert this image to ASCII art in Python with Pillow.",
+    "Turn this logo PNG into an ASCII text file I can paste in a README.",
+    "Batch-convert a folder of photos to ASCII .txt files.",
+    "Render this photo as ASCII and save it as a PNG with green text on black.",
+    "I want sharp-edged ASCII from this image, not the usual blurry brightness-ramp output.",
+    "Write me a command-line tool that turns a screenshot into ASCII art."
+  ],
+  "should_not_trigger": [
+    "Add an image-to-ASCII effect to my React site.",
+    "Build a real-time textmode.js sketch that turns my webcam into ASCII.",
+    "Generate an ASCII banner of the word HELLO with figlet.",
+    "Print colored text in my terminal with ANSI escape codes.",
+    "Theme my <AsciiImage> component green-on-black with CSS variables."
+  ],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Convert this image to ASCII at 80 columns and print it.",
+      "expected_output": "Runs scripts/image_to_ascii.py with --cols 80; output is 80-char-wide monospace ASCII whose glyphs follow the image's contours (shape-aware: diagonals/curves traced with /, \\, _, etc.), not a uniform fill or a single brightness ramp.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Render this image as a PNG with white text on black and save it.",
+      "expected_output": "Produces a .png drawn with the bundled monospace font, white foreground on black background (--format png --fg white --bg black, with --invert for correct light-on-dark tones), matching the ASCII text output.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Crank the contrast so the edges in this image are sharper.",
+      "expected_output": "Raises --contrast (e.g. to 4) and/or enables --directional; boundaries between light and dark regions get crisper without destroying smooth gradients.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Turn this logo into an ASCII text file for my README.",
+      "expected_output": "Runs the converter with --out logo.txt (default dark-on-light polarity, no ANSI escapes in the file), a sensible --cols for a README, producing a clean monospace .txt.",
+      "files": []
+    }
+  ]
+}
