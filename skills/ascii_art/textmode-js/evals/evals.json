@@ -1,0 +1,52 @@
+{
+  "skill_name": "textmode-js",
+  "notes": "Triggering is the dominant failure mode. should_trigger are cases where this skill must fire; should_not_trigger are near-misses that must NOT pull in a textmode.js-specific skill (generic ASCII art, other libraries, non-JS image-to-ASCII). evals are authoring/debugging tasks whose output is verifiable code.",
+  "should_trigger": [
+    "Build a textmode.js sketch that renders animated Perlin-noise ASCII clouds.",
+    "Help me set up textmode.js with the UMD script tag and get a first sketch on screen.",
+    "My textmode.js sketch draws everything in the center instead of the top-left — what's wrong?",
+    "Convert an uploaded image to ASCII in the browser using textmode.js and a custom glyph ramp.",
+    "Export my textmode.js animation as a looping GIF and an MP4.",
+    "Write a custom GLSL material shader for a textmode.js sketch.",
+    "Add a second layer with a screen blend mode and a bloom filter to my textmode.js piece.",
+    "Make an audio-reactive VJ visual on a character grid with textmode.js.",
+    "Why is t.grid.cols undefined before setup runs in my textmode.js sketch?",
+    "Use t.createGlyphRamp and t.noise to map brightness to characters."
+  ],
+  "should_not_trigger": [
+    "Make some ASCII art of a cat.",
+    "Convert this image to ASCII art in Python with Pillow.",
+    "Generate an ASCII banner for my README with figlet.",
+    "Draw a particle system in p5.js.",
+    "Render text to a canvas with the 2D canvas API.",
+    "Write a bash one-liner that prints a box-drawing border.",
+    "Build a terminal TUI with blessed/ink in Node.",
+    "How do I print colored text in my terminal with ANSI escape codes?"
+  ],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Set up a minimal textmode.js sketch (ESM) that fills the grid background and draws a red 'A' rectangle, resizing with the window.",
+      "expected_output": "Uses `import { textmode } from \"textmode.js\"`, `textmode.create({width,height,fontSize,frameRate})`, `t.setup`/`t.draw`, sets `t.char`/`t.charColor` and calls `t.background` then `t.rect` (sized in cells), and wires `t.windowResized` to `t.resizeCanvas`. Does NOT assume a top-left origin.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write a textmode.js draw loop that maps Perlin noise to characters using a glyph ramp, animated over time.",
+      "expected_output": "Creates a ramp with `t.createGlyphRamp(\" .:-=+*#%@\")` in setup, reads `t.noise(x*scale, y*scale, t.frameCount*scale)` per cell, calls `ramp.at(n)`, and offsets cell indices by `-cols/2, -rows/2` (center origin) when translating. Stamps cells with `t.point()` inside `push`/`pop`.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "My textmode.js sketch shows a black canvas and nothing draws. Debug it.",
+      "expected_output": "Checks WebGL2 support, that `t.draw` runs and `t.background` is called each frame, that assets were awaited in `setup`, and that drawing isn't off-screen due to the center origin. Inspects the console for renderer-init errors.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Export 120 frames of my textmode.js sketch as a looping GIF.",
+      "expected_output": "Calls `await t.saveGIF({ filename, frameCount: 120, frameRate, repeat: 0 })`, and notes that a deterministic seed plus a period that divides frameCount yields a clean loop; optionally `noLoop()` + `redraw(1)` for frame-accurate capture.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "skill_name": "ascii-img-react",
+  "notes": "Triggering is the dominant failure mode. should_trigger MUST fire; should_not_trigger are near-misses that must NOT pull this in (CLI/Python image conversion, the textmode.js library, or generic non-React rendering); evals are authoring tasks whose output is verifiable React/TS code.",
+  "should_trigger": [
+    "Add an image-to-ASCII effect to my React site using ascii-img-react.",
+    "How do I theme the <AsciiImage> output green-on-black with CSS variables?",
+    "Make a clicky ripple ASCII animation over a hero image on my landing page.",
+    "My <AsciiImage> is blurry/low-detail — which props sharpen the edges?",
+    "Use the ascii-img-react low-level utilities to build a custom character lookup.",
+    "Drop an ASCII portrait into my Astro page, served same-origin for CORS.",
+    "Add a rain animation to my ASCII image with ascii-img-react."
+  ],
+  "should_not_trigger": [
+    "Make ASCII art of this cat and save it as a text file.",
+    "Convert this image to ASCII in Python with Pillow.",
+    "Build a real-time textmode.js webcam-to-ASCII sketch.",
+    "Render text to a 2D canvas with the canvas API.",
+    "Turn this logo PNG into an ASCII .txt for my README from the command line."
+  ],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add <AsciiImage> to a React component rendering /portrait.jpg at 100 columns, green on black, ripple off.",
+      "expected_output": "Imports { AsciiImage } from 'ascii-img-react'; sets src, width={100}, color (green), backgroundColor (black), enableRipple={false}; notes the image must be same-origin or CORS-accessible.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Theme all ASCII instances site-wide with a Fira Code font and a dark palette via CSS.",
+      "expected_output": "Sets --ascii-font-family / --ascii-color / --ascii-background on a shared class, passes it via className, and uses a prefers-color-scheme block for light mode.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "The ASCII render's internal edges look mushy. Tune it.",
+      "expected_output": "Raises contrast and/or directionalContrast (keeping enableDirectionalContrast true), explains the global-vs-directional contrast distinction, and warns about the >150-column animation performance cliff.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Use ascii-img-react in my Next.js App Router hero.",
+      "expected_output": "Marks the component \"use client\" (it uses useEffect + a canvas), renders <AsciiImage src> from a same-origin /public asset, and sets width in characters.",
+      "files": []
+    }
+  ]
+}
