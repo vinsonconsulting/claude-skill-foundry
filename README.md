@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/hero.jpg" alt="A softly glowing black filing cabinet standing in a dim warehouse lined with file cabinets and cardboard boxes" width="800">
+</p>
+
 ```
 ╭──────────────────────────────────────────────╮
 │                                              │
