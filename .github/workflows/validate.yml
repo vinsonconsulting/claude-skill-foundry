@@ -4,6 +4,10 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -12,7 +16,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Lint skills
-        run: python3 scripts/lint_skills.py
-      - name: Check index is current
-        run: python3 scripts/build_index.py --check
+      - name: Install Califa tooling + SkillSpector
+        run: make tools
+      - name: Lint, scan, gate, validate cards, check index
+        run: make check
+      - name: Upload per-skill SARIF to the Security tab
+        if: always()
+        continue-on-error: true
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: skills

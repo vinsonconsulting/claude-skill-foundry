@@ -2,7 +2,7 @@
 
 The single most common terminal-UI bug: assuming one `byte` or one `rune` is one column.
 It isn't. CJK ideographs and many emoji are **two** columns; combining marks are **zero**;
-a ZWJ emoji (👩‍👩‍👧) or a flag is several runes but renders in ~two columns. Misjudge width
+a ZWJ sequence (a family emoji: codepoints U+1F469 U+200D U+1F469 U+200D U+1F467) or a flag is several runes but renders in ~two columns. Misjudge width
 and your borders, truncation, and alignment all drift.
 
 ## Measure and slice by display width
@@ -41,7 +41,7 @@ w := uniseg.StringWidth(s)          // monospace display width
 
 g := uniseg.NewGraphemes(s)         // iterate clusters
 for g.Next() {
-	cluster := g.Str() // a full grapheme, e.g. the whole "👩‍👧" not its pieces
+	cluster := g.Str() // a full grapheme, e.g. a whole woman+girl ZWJ emoji, not its pieces
 	_ = cluster
 }
 ```

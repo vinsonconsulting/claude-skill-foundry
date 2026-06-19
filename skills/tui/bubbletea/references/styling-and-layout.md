@@ -20,8 +20,8 @@ box := lipgloss.NewStyle().
 ```
 
 Width/height set the block size; `lipgloss.Width(s)` / `lipgloss.Height(s)` /
-`lipgloss.Size(s)` **measure** rendered output (display columns, ANSI-aware) — always use
-these over `len()`.
+`lipgloss.Size(s)` **measure** rendered output (display columns, ANSI-aware) — prefer these
+to `len()`.
 
 ## Color in v2 — "pure", profile-aware
 
