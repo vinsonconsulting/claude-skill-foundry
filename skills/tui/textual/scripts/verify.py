@@ -9,8 +9,9 @@ imports plus real apps driven through Pilot — and asserts the deprecation map.
     python3 -m venv .venv && .venv/bin/pip install textual rich
     .venv/bin/python skills/tui/textual/scripts/verify.py
 
-Exit code 0 = all good. Non-zero = a check drifted; read the FAIL lines, then update
-SKILL.md / references/versioning.md accordingly. No secrets, no network, standalone.
+Exit code 0 = all good. Non-zero = a check drifted; read the FAIL lines and bring the
+skill's docs (SKILL.md, references/versioning.md) back in sync by hand. No secrets, no
+network, standalone.
 """
 from __future__ import annotations
 import asyncio

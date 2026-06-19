@@ -1,0 +1,13 @@
+Vendored from: vinsonconsulting/califa-cards
+Commit:        19fbf75f7e88491fdc486fd71571404130608943  (branch feat/skill-cards-v1)
+Vendored on:   2026-06-19
+License:       Apache-2.0 (see ./LICENSE)
+
+This is a pinned copy of Califa's `schema/` + `skillcard/` packages (plus the
+Jinja template and pyproject) so the public cabinet's `make check` can validate
+and gate skill cards without a private-repo CI secret.
+
+Install:  python3 -m pip install -e "tooling/califa[scan]"
+
+v2 exit: replace this vendored copy with a pinned dependency once Califa
+publishes a tagged release / package.

@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "califa-cards"
+version = "0.2.0"
+description = "Califa Cards: A Comprehensive Skill Card Standard and Testing Framework"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Vinson Consulting" }]
+keywords = ["claude", "skills", "skill-card", "skillspector", "security", "sarif"]
+dependencies = [
+  "pydantic>=2",
+  "jinja2>=3",
+  "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+# Local dev tooling. Install with: pip install -e ".[dev]"
+dev = ["ruff>=0.5", "pytest>=8"]
+# SkillSpector has no PyPI release and ships no release tags, so it is pinned to
+# an immutable commit (the current main, and the commit every shipped card pins
+# in scan.tool). Install with: pip install -e ".[scan]"  (needs git + network).
+scan = [
+  "skillspector @ git+https://github.com/NVIDIA/SkillSpector@a5092dd9b9521ff57a9b53612bb129ce78019002",
+]
+
+[project.scripts]
+skillcard = "skillcard.cli:main"
+
+[tool.setuptools]
+packages = ["schema", "skillcard"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["schema", "skillcard"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
