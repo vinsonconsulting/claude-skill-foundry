@@ -29,12 +29,12 @@ cards:
 		echo ">> $$d"; \
 		key=$$(echo "$$d" | tr '/' '_'); \
 		rm -f "$$d/scan.json" "$$d/report.sarif"; \
-		skillspector scan "$$d" --no-llm --format json --output "$(SCAN_DIR)/$$key.json"; \
 		if [ -f "$$d/skill-card.md" ]; then \
-			skillspector scan "$$d" --no-llm --format sarif --output "$$d/report.sarif"; \
+			python3 scripts/scan_skill.py "$$d" --json "$(SCAN_DIR)/$$key.json" --sarif "$$d/report.sarif"; \
 			python3 -m skillcard.cli gate "$(SCAN_DIR)/$$key.json" --card "$$d/skill-card.md"; \
 			python3 -m skillcard.cli validate "$$d"; \
 		else \
+			python3 scripts/scan_skill.py "$$d" --json "$(SCAN_DIR)/$$key.json"; \
 			python3 -m skillcard.cli gate "$(SCAN_DIR)/$$key.json" --warn-medium-without-card; \
 		fi; \
 	done
