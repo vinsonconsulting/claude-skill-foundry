@@ -3,8 +3,10 @@
 ``content_hash`` is a deterministic SHA256 over the skill's *source* files, so a
 card can declare exactly which bytes it describes. It deliberately excludes the
 generated card and scan artifacts (``skill-card.md``, ``card.json``,
-``scan.json``, ``report.sarif``) so the hash never depends on itself, plus the
-usual editor/VCS noise (``.DS_Store``, ``__pycache__``, ``.git``).
+``scan.json``, ``report.json``, ``report.sarif``) so the hash never depends on
+itself, plus the authored governance sidecar (``card.authored.yaml``) so editing
+status or a finding decision never moves the *code*-identity hash, plus the usual
+editor/VCS noise (``.DS_Store``, ``__pycache__``, ``.git``).
 
 Algorithm (normative):
 
@@ -24,8 +26,23 @@ import hashlib
 from pathlib import Path
 
 # Generated artifacts (would make the hash self-referential) and editor/VCS noise.
+# ``report.json`` and ``scan.json`` are both names the SkillSpector JSON pass may
+# write into a skill dir; ``card-review.md`` is the generator's sign-off
+# checklist; ``card.authored.yaml`` is the authored governance overlay (status,
+# accepted-finding notes, provenance pins). None is source, so none enters the
+# hash -- and because this set also drives ``_source_files`` (and thus the
+# git-scoped ``source_commit``), the sidecar never advances provenance either.
 EXCLUDE_NAMES = frozenset(
-    {"skill-card.md", "card.json", "scan.json", "report.sarif", ".DS_Store"}
+    {
+        "skill-card.md",
+        "card.json",
+        "card-review.md",
+        "card.authored.yaml",
+        "scan.json",
+        "report.json",
+        "report.sarif",
+        ".DS_Store",
+    }
 )
 EXCLUDE_DIR_PARTS = frozenset({"__pycache__", ".git"})
 

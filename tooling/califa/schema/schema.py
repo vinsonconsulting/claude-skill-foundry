@@ -5,8 +5,10 @@ standard. The cabinets' ``make check`` and the discover Worker's ingest
 validator both import :class:`SkillCard` from here, so a field change here is
 a change to the standard everywhere it is consumed.
 
-Canonical form is YAML frontmatter in ``skill-card.md`` (the human view),
-derived 1:1 to ``card.json`` (the machine view and Worker index payload).
+Canonical form is ``card.json`` (the machine view and Worker index payload),
+generated from authored inputs (``SKILL.md`` frontmatter for identity, a
+``card.authored.yaml`` sidecar for governance) and rendered one-way to the
+``skill-card.md`` human view.
 
 Required [R] fields are plain (no default); optional [O] fields default to
 ``None``. ``extra="forbid"`` rejects unknown keys at every level, so a typo'd
@@ -90,6 +92,10 @@ class Metrics(_Base):
     token_efficiency: float | None = None
     eval_pass_rate: float = Field(ge=0.0, le=1.0)
     harness: str
+    # A free-text caveat on the scorecard: a measured number can be valid yet
+    # misleading (for example a harness-floor recall artifact). Nullable and
+    # optional; omitted from output when absent.
+    notes: str | None = None
 
 
 # --- A.4 Security ---------------------------------------------------------------

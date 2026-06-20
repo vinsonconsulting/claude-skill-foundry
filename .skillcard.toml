@@ -1,0 +1,11 @@
+# Repo config consumed by `skillcard build` (Califa SPEC.md section C). discover.py
+# resolves the nearest .skillcard.toml walking up from each skill dir, so this
+# root file is shared by every skill in the cabinet.
+owner = "@vinsonconsulting"
+tier = "public"
+url = "https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills"
+license = "MIT"
+# The SkillSpector pin the cabinet gates against (pyproject's [scan] extra). Takes
+# precedence over the report's self-reported version for scan.tool, so the card's
+# scan.tool stays stable even though SkillSpector self-reports "2.2.3".
+scan_tool = "skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002"
