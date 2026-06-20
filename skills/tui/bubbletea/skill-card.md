@@ -8,7 +8,7 @@ repo:
   url: https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
 license: MIT
 source_commit: 5e49df814225e1d33d63b52f49780175fd0a4ef2
-content_hash: sha256:65b7189d2bd55220cd7e615c0d8bc98e39ec46d8dd102754c603360accb93e3c
+content_hash: sha256:4580dff20fbc0b70afbe8389e411e20069c580e2a4e95cc53662b3065477cdde
 description: 'Use this skill when building a terminal UI (TUI) in Go with Bubble Tea and the Charm stack — the Elm Architecture / MVU pattern (`tea.Model` with `Init`/`Update`/`View`), `Cmd`/`Msg` event flow, Lip Gloss styling and layout, Bubbles components (`viewport`, `list`, `table`, `textinput`, `textarea`, `spinner`, `progress`), Glamour markdown rendering, and teatest for testing. Especially apt for streaming tokens from an LLM/agent into a terminal (goroutine → `p.Send` → `Update` → `viewport`), an agentic CLI, or any interactive full-screen or inline terminal app in Go. Targets v2 on the `charm.land/*/v2` import paths (Go 1.25+); writes current-version-correct code and avoids v1/beta patterns. Not for: Rust TUIs (→ Ratatui sibling), Python TUIs (→ Textual sibling), plain non-interactive CLI output (use `fmt`/`cobra`/standalone `lipgloss`), web/GUI UIs, or agent session orchestration / tmux / process multiplexing.'
 triggers:
   positive:

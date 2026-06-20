@@ -4,7 +4,7 @@ Each HUMAN field below needs sign-off: put an x in its checkbox once you
 have verified it. `skillcard review` / `make check` blocks until every box
 is checked. Regenerating the card with changed content resets this checklist.
 
-fingerprint: sha256:e783b13fa87b1f61e148e2e81e776a6a2ddac4db5f8e34ffde631e76bedbdeb6
+fingerprint: sha256:8463c78c583f07b80b52a3d55ddf514c003a8078670c4365377883b6746576f0
 
 - [x] `summary` — Write current, compiling Ratatui 0.30+ terminal UIs in Rust — render loop and teardown, Layout/Constraint, widgets, styling, Unicode width, streaming, and headless render tests.
 - [x] `triggers` — 12 positive / 10 negative

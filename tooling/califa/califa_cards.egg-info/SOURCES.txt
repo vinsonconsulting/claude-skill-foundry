@@ -21,5 +21,6 @@ skillcard/harness/__init__.py
 skillcard/harness/assemble.py
 skillcard/harness/command.py
 skillcard/harness/functional.py
+skillcard/harness/optimize.py
 skillcard/harness/provenance.py
 skillcard/harness/trigger.py

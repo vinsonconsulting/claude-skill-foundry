@@ -4,7 +4,7 @@ Each HUMAN field below needs sign-off: put an x in its checkbox once you
 have verified it. `skillcard review` / `make check` blocks until every box
 is checked. Regenerating the card with changed content resets this checklist.
 
-fingerprint: sha256:d02b971b322fc026142351a4a6609e13c99db424c743bf952d00828c0960ea60
+fingerprint: sha256:1f8c5403c7b3f0a96c49d3cade6e4fd2ff14c8eeba53eef145669ddee3adc07e
 
 - [x] `summary` — Convert an image file to ASCII art from the command line with shape-aware glyph matching (6D shape vectors, not a brightness ramp), output as .txt or a rendered .png/.svg, using a bundled monospace font for deterministic results.
 - [x] `triggers` — 6 positive / 3 negative
