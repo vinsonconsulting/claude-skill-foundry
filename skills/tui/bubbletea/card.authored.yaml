@@ -1,0 +1,9 @@
+# Authored governance overlay (Califa SPEC.md section C). EXCLUDED from
+# content_hash and from the git-scoped source_commit, so editing status or a
+# finding note never moves the skill's code-identity hash. SKILL.md carries
+# identity; this file carries governance.
+status: beta
+
+# Accept-and-note decisions, keyed by SkillSpector finding id. This skill scans
+# in the LOW band with no findings, so there is nothing to accept.
+accepted_findings: []

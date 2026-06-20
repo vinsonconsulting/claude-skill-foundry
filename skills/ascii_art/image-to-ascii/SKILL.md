@@ -12,6 +12,41 @@ description: Use when converting an image file to ASCII art outside the browser 
   scripts/image_to_ascii.py. Not for ASCII graphics on a web page or in React (use
   ascii-img-react), not the real-time textmode.js library (use textmode-js), and not
   figlet-style text banners (this converts images, not words).
+version: 0.1.0
+summary: Convert an image file to ASCII art from the command line with shape-aware glyph matching (6D
+  shape vectors, not a brightness ramp), output as .txt or a rendered .png/.svg, using a bundled monospace
+  font for deterministic results.
+output:
+  type: ASCII art
+  format: .txt, .png, or .svg produced by scripts/image_to_ascii.py (a shell invocation)
+dependencies:
+- Pillow
+- python>=3.9
+external_endpoints: none
+permissions:
+  network: false
+  shell: true
+  file: true
+  env: false
+  mcp: false
+card_version: '1.0'
+inputs:
+- 'An image file (PNG/JPG/etc.) plus options: --cols, --out/--format, --invert, --contrast.'
+triggers:
+  positive:
+  - make ASCII art of this photo
+  - convert this logo PNG to an ASCII text file for my README
+  - turn this screenshot into ASCII art saved as a .txt
+  - batch-convert a folder of images to ASCII art
+  - render this image as an ASCII .png, white text on black
+  - sharpen the edges on my logo's image-to-ASCII conversion
+  negative:
+  - prompt: render an image as ASCII art in a React component or on a web page
+    use_instead: ascii-img-react
+  - prompt: build a real-time generative textmode sketch (webcam, animation, WebGL)
+    use_instead: textmode-js
+  - prompt: make a figlet-style ASCII banner from a word
+    use_instead: figlet/toilet text-banner tools (this converts images, not words)
 ---
 
 # image-to-ascii

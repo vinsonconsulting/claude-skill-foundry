@@ -1,26 +1,15 @@
 ---
 name: ratatui
 version: 0.1.0
-card_version: '1.0'
-summary: Write current, compiling Ratatui 0.30+ terminal UIs in Rust — render loop and teardown, Layout/Constraint,
-  widgets, styling, Unicode width, streaming, and headless render tests.
+summary: Write current, compiling Ratatui 0.30+ terminal UIs in Rust — render loop and teardown, Layout/Constraint, widgets, styling, Unicode width, streaming, and headless render tests.
 owner: '@vinsonconsulting'
 repo:
   tier: public
   url: https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
 license: MIT
-source_commit: b37fa5175bbce951815918d9295c86b1326c18a6
-content_hash: sha256:59a6334e9434c10b9cfbf95cfb6b9a5f7cf01e5d4d1b8192bb36712004e3fbca
-description: 'Use this skill for any task involving a Rust terminal/text user interface (TUI) built with
-  Ratatui (or crossterm) — creating one, or debugging, fixing, testing, or extending an existing one.
-  Covers: scaffolding the initial `main`/render loop and terminal setup; fixing teardown so a panic or
-  crash doesn''t leave the terminal in raw mode / broken; laying out panels, sidebars, status bars, dashboards,
-  and popups with Layout/Constraint; wiring widgets like List, Table, Gauge, Chart, Scrollbar (including
-  selection/scroll state that won''t move); styling, text wrapping, and Unicode width issues; streaming
-  LLM/async output into a terminal; and unit-testing rendered output without a real terminal. Triggers
-  on "rust + terminal app/UI/dashboard", ratatui, crossterm. Writes current Ratatui 0.30+ code, not stale
-  tui-rs patterns. Not for: Go TUIs (Bubble Tea), Python TUIs (Textual), non-interactive CLI output or
-  progress bars, web/browser UIs, image-to-ASCII art (ascii/textmode), or tmux/agent-session orchestration.'
+source_commit: 5e49df814225e1d33d63b52f49780175fd0a4ef2
+content_hash: sha256:34175b38cc08567cc97143a47b65b3b05fe6eedc08545bbc9aeb53656f2300c4
+description: 'Use this skill for any task involving a Rust terminal/text user interface (TUI) built with Ratatui (or crossterm) — creating one, or debugging, fixing, testing, or extending an existing one. Covers: scaffolding the initial `main`/render loop and terminal setup; fixing teardown so a panic or crash doesn''t leave the terminal in raw mode / broken; laying out panels, sidebars, status bars, dashboards, and popups with Layout/Constraint; wiring widgets like List, Table, Gauge, Chart, Scrollbar (including selection/scroll state that won''t move); styling, text wrapping, and Unicode width issues; streaming LLM/async output into a terminal; and unit-testing rendered output without a real terminal. Triggers on "rust + terminal app/UI/dashboard", ratatui, crossterm. Writes current Ratatui 0.30+ code, not stale tui-rs patterns. Not for: Go TUIs (Bubble Tea), Python TUIs (Textual), non-interactive CLI output or progress bars, web/browser UIs, image-to-ASCII art (ascii/textmode), or tmux/agent-session orchestration.'
 triggers:
   positive:
   - build a Rust dashboard TUI with ratatui that has a sidebar and a live-updating chart
@@ -70,15 +59,17 @@ permissions:
   file: true
   env: false
   mcp: false
+metrics: null
 scan:
   tool: skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002
   score: 0
   severity: LOW
-  date: '2026-06-19'
+  date: '2026-06-20'
   findings: []
   sarif: ./report.sarif
 status: beta
-updated: '2026-06-19'
+card_version: '1.0'
+updated: '2026-06-20'
 ---
 
 # ratatui <small>v0.1.0</small>
@@ -91,12 +82,11 @@ Write current, compiling Ratatui 0.30+ terminal UIs in Rust — render loop and 
 
 Use this skill for any task involving a Rust terminal/text user interface (TUI) built with Ratatui (or crossterm) — creating one, or debugging, fixing, testing, or extending an existing one. Covers: scaffolding the initial `main`/render loop and terminal setup; fixing teardown so a panic or crash doesn't leave the terminal in raw mode / broken; laying out panels, sidebars, status bars, dashboards, and popups with Layout/Constraint; wiring widgets like List, Table, Gauge, Chart, Scrollbar (including selection/scroll state that won't move); styling, text wrapping, and Unicode width issues; streaming LLM/async output into a terminal; and unit-testing rendered output without a real terminal. Triggers on "rust + terminal app/UI/dashboard", ratatui, crossterm. Writes current Ratatui 0.30+ code, not stale tui-rs patterns. Not for: Go TUIs (Bubble Tea), Python TUIs (Textual), non-interactive CLI output or progress bars, web/browser UIs, image-to-ASCII art (ascii/textmode), or tmux/agent-session orchestration.
 
-## Permissions
-
-network: false — the skill makes no network calls. shell: true — it guides running the toolchain (build/test commands) in the workspace. file: true — it reads and writes source files in the user's project. env: false, mcp: false — unused.
 
 ## Security
 
-SkillSpector static scan (`skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002`, `--no-llm`) scored 0/100 (LOW band) with no findings. The full SARIF report is at `./report.sarif`.
+SkillSpector scan `skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002` scored 0/100 (LOW band).
 
-_v1 card: `status: beta`, no metrics block yet (metrics are a v2 deliverable)._
+No findings.
+
+The SARIF report lives at `./report.sarif`.

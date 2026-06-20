@@ -1,11 +1,13 @@
 Vendored from: vinsonconsulting/califa-cards
-Commit:        1f14622592dbe2f21a2c70f930ef41cf61c72ca7  (branch feat/skill-cards-v1)
-Vendored on:   2026-06-19
+Commit:        474ad5b54f1a282c613e271d6d9ecd19efb5c40b  (branch main, v0.5.0)
+Vendored on:   2026-06-20
 License:       Apache-2.0 (see ./LICENSE)
 
-This is a pinned copy of Califa's `schema/` + `skillcard/` packages (plus the
-Jinja template and pyproject) so the public cabinet's `make check` can validate
-and gate skill cards without a private-repo CI secret.
+This is a pinned copy of Califa's `schema/` + `skillcard/` packages (now
+including the `skillcard.harness` subpackage, dormant here — `make check` never
+runs `skillcard eval`), plus the Jinja template and pyproject, so the public
+cabinet's `make check` can validate and gate skill cards without a private-repo
+CI secret.
 
 Install:  python3 -m pip install -e "tooling/califa[scan]"
 

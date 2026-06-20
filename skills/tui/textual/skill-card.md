@@ -1,26 +1,15 @@
 ---
 name: textual
 version: 0.1.0
-card_version: '1.0'
-summary: Build and debug Python TUIs with Textual 8.x — App/Screen/Widget, reactive attributes, TCSS layout,
-  @work workers, Pilot tests, and textual serve.
+summary: Build and debug Python TUIs with Textual 8.x — App/Screen/Widget, reactive attributes, TCSS layout, @work workers, Pilot tests, and textual serve.
 owner: '@vinsonconsulting'
 repo:
   tier: public
   url: https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
 license: MIT
-source_commit: b37fa5175bbce951815918d9295c86b1326c18a6
-content_hash: sha256:5a3f59edb7c331ca420c2133aee9f3c61daeaa81c08f100018fa2115062eb9b0
-description: 'Use this skill when building or debugging a Python terminal UI (TUI) with Textual (Textualize''s
-  framework) — `App`/`Screen`/`Widget`, `compose()`, `reactive`/`watch_`, `@work` workers, Textual CSS
-  / TCSS (`dock`, `grid`, `fr` units), widgets like `RichLog`, `Markdown`, `DataTable`, `Input`, `TextArea`,
-  `Tree`, `ListView`; testing with `Pilot` / `pytest-textual-snapshot`; `textual serve` / Textual Web
-  deploy; Rich renderables inside Textual; or streaming LLM/agent tokens into a terminal and agentic-CLI
-  front-ends. Triggers: Textual, Textualize, TUI, terminal UI, `@work`, TCSS, `RichLog`, `query_one`,
-  Pilot, `textual serve`. Writes current 8.x code, not stale pre-1.0 patterns. Not for: Rust TUIs (→ Ratatui
-  sibling), Go TUIs (→ Bubble Tea sibling), plain non-interactive CLI output (Click/argparse/Typer) with
-  no live UI, or agent-session orchestration / tmux multiplexing. Note: browser deploy via `textual serve`
-  (the same Textual app served to a browser) IS in scope — a general React/HTML web-app request is not.'
+source_commit: 5e49df814225e1d33d63b52f49780175fd0a4ef2
+content_hash: sha256:0b44d09731b775fe1ffdb00ef7f1783879ddf3d8fcdcdf256b5a11bebbf39534
+description: 'Use this skill when building or debugging a Python terminal UI (TUI) with Textual (Textualize''s framework) — `App`/`Screen`/`Widget`, `compose()`, `reactive`/`watch_`, `@work` workers, Textual CSS / TCSS (`dock`, `grid`, `fr` units), widgets like `RichLog`, `Markdown`, `DataTable`, `Input`, `TextArea`, `Tree`, `ListView`; testing with `Pilot` / `pytest-textual-snapshot`; `textual serve` / Textual Web deploy; Rich renderables inside Textual; or streaming LLM/agent tokens into a terminal and agentic-CLI front-ends. Triggers: Textual, Textualize, TUI, terminal UI, `@work`, TCSS, `RichLog`, `query_one`, Pilot, `textual serve`. Writes current 8.x code, not stale pre-1.0 patterns. Not for: Rust TUIs (→ Ratatui sibling), Go TUIs (→ Bubble Tea sibling), plain non-interactive CLI output (Click/argparse/Typer) with no live UI, or agent-session orchestration / tmux multiplexing. Note: browser deploy via `textual serve` (the same Textual app served to a browser) IS in scope — a general React/HTML web-app request is not.'
 triggers:
   positive:
   - build a Textual app with a DataTable and a Footer
@@ -70,15 +59,17 @@ permissions:
   file: true
   env: false
   mcp: false
+metrics: null
 scan:
   tool: skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002
   score: 0
   severity: LOW
-  date: '2026-06-19'
+  date: '2026-06-20'
   findings: []
   sarif: ./report.sarif
 status: beta
-updated: '2026-06-19'
+card_version: '1.0'
+updated: '2026-06-20'
 ---
 
 # textual <small>v0.1.0</small>
@@ -91,12 +82,11 @@ Build and debug Python TUIs with Textual 8.x — App/Screen/Widget, reactive att
 
 Use this skill when building or debugging a Python terminal UI (TUI) with Textual (Textualize's framework) — `App`/`Screen`/`Widget`, `compose()`, `reactive`/`watch_`, `@work` workers, Textual CSS / TCSS (`dock`, `grid`, `fr` units), widgets like `RichLog`, `Markdown`, `DataTable`, `Input`, `TextArea`, `Tree`, `ListView`; testing with `Pilot` / `pytest-textual-snapshot`; `textual serve` / Textual Web deploy; Rich renderables inside Textual; or streaming LLM/agent tokens into a terminal and agentic-CLI front-ends. Triggers: Textual, Textualize, TUI, terminal UI, `@work`, TCSS, `RichLog`, `query_one`, Pilot, `textual serve`. Writes current 8.x code, not stale pre-1.0 patterns. Not for: Rust TUIs (→ Ratatui sibling), Go TUIs (→ Bubble Tea sibling), plain non-interactive CLI output (Click/argparse/Typer) with no live UI, or agent-session orchestration / tmux multiplexing. Note: browser deploy via `textual serve` (the same Textual app served to a browser) IS in scope — a general React/HTML web-app request is not.
 
-## Permissions
-
-network: false — the skill makes no network calls. shell: true — it guides running the toolchain (build/test commands) in the workspace. file: true — it reads and writes source files in the user's project. env: false, mcp: false — unused.
 
 ## Security
 
-SkillSpector static scan (`skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002`, `--no-llm`) scored 0/100 (LOW band) with no findings. The full SARIF report is at `./report.sarif`.
+SkillSpector scan `skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002` scored 0/100 (LOW band).
 
-_v1 card: `status: beta`, no metrics block yet (metrics are a v2 deliverable)._
+No findings.
+
+The SARIF report lives at `./report.sarif`.

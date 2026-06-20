@@ -13,6 +13,59 @@ description: >-
   (Click/argparse/Typer) with no live UI, or agent-session orchestration / tmux multiplexing.
   Note: browser deploy via `textual serve` (the same Textual app served to a browser) IS in
   scope — a general React/HTML web-app request is not.
+version: 0.1.0
+summary: Build and debug Python TUIs with Textual 8.x — App/Screen/Widget, reactive attributes, TCSS layout,
+  @work workers, Pilot tests, and textual serve.
+output:
+  type: Code
+  format: Markdown with Python + TCSS code blocks
+dependencies:
+- textual>=8.2,<9
+- rich>=15.0
+- python>=3.9
+external_endpoints: none
+permissions:
+  network: false
+  shell: true
+  file: true
+  env: false
+  mcp: false
+card_version: '1.0'
+triggers:
+  positive:
+  - build a Textual app with a DataTable and a Footer
+  - my reactive attribute isn't updating the widget — fix the watch_ method
+  - lay out two panels side by side with TCSS dock/grid
+  - push a modal Screen and return a value when it dismisses
+  - run a long task in a @work worker without blocking the Textual UI
+  - stream agent tokens into a RichLog in my Textual app
+  - write a Pilot test / pytest-textual-snapshot for my Textual app
+  - deploy my Textual app to the browser with textual serve
+  - why does textual run show a blank screen
+  - style widgets with TCSS using fr units and dock
+  - embed a Rich renderable inside a Textual widget
+  - build a Tree or ListView navigation pane in Textual
+  negative:
+  - prompt: build a Rust terminal UI
+    use_instead: ratatui
+  - prompt: build a Go TUI with Bubble Tea
+    use_instead: bubbletea
+  - prompt: convert an image to ASCII art
+    use_instead: image-to-ascii
+  - prompt: render an image as terminal color blocks
+    use_instead: textmode-js
+  - prompt: make an ASCII-art React component
+    use_instead: ascii-img-react
+  - prompt: parse CLI flags with argparse/Click, no live UI
+    use_instead: plain CLI output (no TUI skill)
+  - prompt: print a one-shot colored table with Rich, no app loop
+    use_instead: rich-only output (out of scope)
+  - prompt: build a general React/HTML web app
+    use_instead: web UI (out of scope)
+  - prompt: draw directly with curses windows
+    use_instead: curses (out of scope)
+  - prompt: orchestrate tmux or agent sessions
+    use_instead: session orchestration (out of scope)
 ---
 
 # Textual

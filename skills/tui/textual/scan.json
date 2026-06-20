@@ -1,0 +1,112 @@
+{
+  "skill": {
+    "name": "textual",
+    "source": "/private/var/folders/t9/lt9wnv4s1bs0hl_10rmccfx80000gn/T/tmpvvrurjgt/textual",
+    "scanned_at": "2026-06-20T13:37:29.281012+00:00"
+  },
+  "risk_assessment": {
+    "score": 0,
+    "severity": "LOW",
+    "recommendation": "SAFE"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 317,
+      "executable": false,
+      "size_bytes": 15345
+    },
+    {
+      "path": "card.authored.yaml",
+      "type": "yaml",
+      "lines": 9,
+      "executable": false,
+      "size_bytes": 450
+    },
+    {
+      "path": "evals/evals.json",
+      "type": "json",
+      "lines": 90,
+      "executable": false,
+      "size_bytes": 5279
+    },
+    {
+      "path": "references/agent-ui.md",
+      "type": "markdown",
+      "lines": 96,
+      "executable": false,
+      "size_bytes": 4231
+    },
+    {
+      "path": "references/architecture.md",
+      "type": "markdown",
+      "lines": 172,
+      "executable": false,
+      "size_bytes": 6821
+    },
+    {
+      "path": "references/ecosystem.md",
+      "type": "markdown",
+      "lines": 44,
+      "executable": false,
+      "size_bytes": 2327
+    },
+    {
+      "path": "references/styling-and-layout.md",
+      "type": "markdown",
+      "lines": 118,
+      "executable": false,
+      "size_bytes": 4341
+    },
+    {
+      "path": "references/testing.md",
+      "type": "markdown",
+      "lines": 72,
+      "executable": false,
+      "size_bytes": 2970
+    },
+    {
+      "path": "references/text-and-unicode.md",
+      "type": "markdown",
+      "lines": 58,
+      "executable": false,
+      "size_bytes": 2494
+    },
+    {
+      "path": "references/versioning.md",
+      "type": "markdown",
+      "lines": 55,
+      "executable": false,
+      "size_bytes": 3865
+    },
+    {
+      "path": "references/web-deploy.md",
+      "type": "markdown",
+      "lines": 43,
+      "executable": false,
+      "size_bytes": 2334
+    },
+    {
+      "path": "references/widgets.md",
+      "type": "markdown",
+      "lines": 89,
+      "executable": false,
+      "size_bytes": 4258
+    },
+    {
+      "path": "scripts/verify.py",
+      "type": "python",
+      "lines": 297,
+      "executable": true,
+      "size_bytes": 11107
+    }
+  ],
+  "issues": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.2.3",
+    "llm_requested": false,
+    "llm_available": false
+  }
+}

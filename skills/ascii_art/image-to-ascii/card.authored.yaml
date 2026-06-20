@@ -1,0 +1,29 @@
+# Authored governance overlay (Califa SPEC.md section C). EXCLUDED from
+# content_hash and from the git-scoped source_commit, so editing status or a
+# finding note never moves the skill's code-identity hash. SKILL.md carries
+# identity; this file carries governance.
+status: beta
+
+# Accept-and-note decisions, keyed by SkillSpector finding id. This skill scans
+# MEDIUM (score 39 = (LP3 +10, EA3 x4 +20) x1.3 executable-script multiplier);
+# in the MEDIUM band the gate requires every finding accepted with a note. Both
+# are false positives on legitimate content, justified below.
+accepted_findings:
+  - id: LP3
+    note: >-
+      SkillSpector 'MCP Least Privilege' (LP3) on SKILL.md: flags file_read /
+      file_write with no scanner-recognized permissions declaration. Accepted,
+      not fixed — LP3 reads a `permissions` *list*, but the Claude Code skill
+      loader honors `allowed-tools`, not a SkillSpector-style permissions list,
+      so adding one would be loader-ignored scanner-bait. The file I/O is the
+      converter's documented job (read an image, write the .txt/.png/.svg via
+      scripts/image_to_ascii.py), confined to the workspace; external_endpoints
+      is none and the skill makes no network calls.
+  - id: EA3
+    note: >-
+      SkillSpector 'Excessive Agency / Scope Creep' (EA3, 4x) on
+      assets/DejaVuSansMono-LICENSE.txt (lines 36/85/144/176): matches the legal
+      phrase "INCLUDING BUT NOT LIMITED TO" in the bundled SIL Open Font License
+      boilerplate. False positive — the match is in the font's license *data*,
+      not skill instructions. The .ttf is shipped only for deterministic
+      rendering and its license text must travel with it.
