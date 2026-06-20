@@ -24,8 +24,15 @@ import sys
 import tempfile
 from pathlib import Path
 
-# Generated artifacts + VCS/editor noise: not skill source, never scanned.
-EXCLUDE_NAMES = {"skill-card.md", "card.json", "scan.json", "report.sarif", ".DS_Store"}
+# Generated artifacts + VCS/editor noise: not skill source, never scanned. Kept
+# in lockstep with Califa's hashing.EXCLUDE_NAMES so the scanned surface matches
+# the hashed surface — including the v0.4.0 sidecar (card.authored.yaml) and the
+# review checklist (card-review.md), whose accept-and-note text would otherwise
+# feed finding descriptions back into the scanner as fresh findings.
+EXCLUDE_NAMES = {
+    "skill-card.md", "card.json", "card-review.md", "card.authored.yaml",
+    "scan.json", "report.json", "report.sarif", ".DS_Store",
+}
 EXCLUDE_DIR_PARTS = {"__pycache__", ".git"}
 
 
