@@ -8,7 +8,7 @@ repo:
   url: https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
 license: MIT
 source_commit: 5e49df814225e1d33d63b52f49780175fd0a4ef2
-content_hash: sha256:c8542a3ff1aae2fba94ff236fea77d0d46df6698ccc6ac8007db0d0259269eb8
+content_hash: sha256:5c6b1646a7e845169642c667509afb4d7078b0a40170656e08ed28e161a322c1
 description: Use when converting an image file to ASCII art outside the browser — a command-line or script run that turns a photo, logo, screenshot, or render into text, saved as .txt or rendered to .png/.svg. Trigger on "make ASCII art of this image/photo/cat", "convert this picture/logo to ASCII", "turn this PNG into an ASCII text file for my README", batch-converting a folder of images to ASCII, or any Python/Pillow image-to-ASCII task. Produces sharp, shape-aware output by matching each cell to the glyph whose shape fits best (6D shape vectors + nearest-neighbour, optional contrast enhancement) rather than a naive brightness ramp, and bundles a monospace font for deterministic results. Runs scripts/image_to_ascii.py. Not for ASCII graphics on a web page or in React (use ascii-img-react), not the real-time textmode.js library (use textmode-js), and not figlet-style text banners (this converts images, not words).
 triggers:
   positive:
