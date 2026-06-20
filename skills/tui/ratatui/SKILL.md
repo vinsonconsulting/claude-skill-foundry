@@ -13,6 +13,59 @@ description: >-
   code, not stale tui-rs patterns. Not for: Go TUIs (Bubble Tea), Python TUIs (Textual),
   non-interactive CLI output or progress bars, web/browser UIs, image-to-ASCII art
   (ascii/textmode), or tmux/agent-session orchestration.
+version: 0.1.0
+summary: Write current, compiling Ratatui 0.30+ terminal UIs in Rust — render loop and teardown, Layout/Constraint,
+  widgets, styling, Unicode width, streaming, and headless render tests.
+output:
+  type: Code
+  format: Markdown with Rust code blocks
+dependencies:
+- ratatui>=0.30,<0.31
+- crossterm
+- rust>=1.85 (2024 edition)
+external_endpoints: none
+permissions:
+  network: false
+  shell: true
+  file: true
+  env: false
+  mcp: false
+card_version: '1.0'
+triggers:
+  positive:
+  - build a Rust dashboard TUI with ratatui that has a sidebar and a live-updating chart
+  - my ratatui app leaves the terminal in raw mode after a panic — fix the teardown
+  - lay out three panels with Layout and Constraint in ratatui
+  - render a scrollable List with persistent selection state in ratatui
+  - stream tokens from an async task into a ratatui terminal without flicker
+  - my ratatui table's Unicode/CJK column widths are misaligned
+  - write a headless render test for my ratatui widget with TestBackend
+  - set up the crossterm event loop and terminal init for a new ratatui app
+  - add a popup/modal overlay on top of my ratatui layout
+  - migrate my old tui-rs code to current ratatui 0.30
+  - draw a Gauge and a Sparkline that update each frame in ratatui
+  - why does my ratatui Scrollbar not move when I scroll the list
+  negative:
+  - prompt: build a terminal UI in Go with Bubble Tea
+    use_instead: bubbletea
+  - prompt: build a Python TUI with Textual
+    use_instead: textual
+  - prompt: convert this image to ASCII art
+    use_instead: image-to-ascii
+  - prompt: render an image as colored terminal blocks
+    use_instead: textmode-js
+  - prompt: make an ASCII-art React component
+    use_instead: ascii-img-react
+  - prompt: add a progress bar to a non-interactive CLI script
+    use_instead: plain CLI output (no TUI skill)
+  - prompt: just print a colored table to stdout, no interactivity
+    use_instead: plain CLI output (no TUI skill)
+  - prompt: build a web dashboard in React
+    use_instead: web UI (out of scope)
+  - prompt: orchestrate tmux panes for my agent session
+    use_instead: session orchestration (out of scope)
+  - prompt: write a CLAUDE.md for my Rust project
+    use_instead: project docs (out of scope)
 ---
 
 # Ratatui
