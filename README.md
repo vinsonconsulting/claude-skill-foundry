@@ -1,6 +1,8 @@
 <p align="center">
-  <!-- FILL: add a dark-mode hero variant, then wrap this <img> in <picture> with a (prefers-color-scheme: dark) <source>. Only assets/hero.jpg exists today. -->
-  <img alt="Jim's Filing Cabinet of Claude Skills" src="https://raw.githubusercontent.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/main/assets/hero.jpg" width="800">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+    <img alt="Jim's Filing Cabinet of Claude Skills" src="assets/hero-light.svg" width="760">
+  </picture>
 </p>
 
 <h1 align="center">Jim's Filing Cabinet of Claude Skills</h1>
@@ -83,8 +85,8 @@ security findings. The result is a Skill Card.
 
 A Skill Card is the per-skill record of what was measured and when: a `card.json`
 (the machine form) plus a human-readable `skill-card.md`. It records the scan
-result and the trigger metrics, keyed to a content hash of the source.
-<!-- FILL: public link to the Skill Card standard; the califa-cards repo is private today. -->
+result and the trigger metrics, keyed to a content hash of the source. See a
+live example in the [`textual` skill card](skills/tui/textual/skill-card.md).
 The catalog above reads its `Scan` and `Trigger` columns straight from each card,
 and `make check` fails if a README drifts from the cards.
 
