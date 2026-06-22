@@ -1,4 +1,4 @@
-.PHONY: lint index check tools cards scan
+.PHONY: lint index readmes check tools cards scan
 
 # Every real skill: a SKILL.md, minus the template and any vendored mirror.
 SKILL_DIRS := $(shell find skills -name SKILL.md -not -path '*/_TEMPLATE/*' -not -path '*/vendor/*' -exec dirname {} \;)
@@ -13,6 +13,13 @@ lint:
 
 index:
 	python3 scripts/build_index.py
+
+# Regenerate every README's card-derived region: the root catalog + badges, the
+# per-category tables, and the per-skill badge/triggers/metrics blocks. All of it
+# reads card.json, so it is safe to re-run; `make check` verifies it is current.
+readmes:
+	python3 scripts/build_index.py
+	python3 scripts/render_skill_readmes.py
 
 # Install the vendored Califa tooling (skillcard) + SkillSpector into the active
 # environment. Run once before `make check`; CI runs it as its own step.
@@ -59,3 +66,4 @@ scan:
 
 check: lint cards
 	python3 scripts/build_index.py --check
+	python3 scripts/render_skill_readmes.py --check

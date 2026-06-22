@@ -32,6 +32,10 @@ from pathlib import Path
 EXCLUDE_NAMES = {
     "skill-card.md", "card.json", "card-review.md", "card.authored.yaml",
     "scan.json", "report.json", "report.sarif", ".DS_Store",
+    # README.md is a generated doc view of the skill (rendered from card.json), not
+    # skill source: excluded here so it matches hashing.EXCLUDE_NAMES and never feeds
+    # the scanner. Mirror of the same LOCAL EDIT pending upstream in califa-cards.
+    "README.md",
 }
 EXCLUDE_DIR_PARTS = {"__pycache__", ".git"}
 
