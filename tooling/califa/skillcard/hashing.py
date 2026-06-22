@@ -49,6 +49,11 @@ EXCLUDE_NAMES = frozenset(
         "report.json",
         "report.sarif",
         "evals.json",
+        # LOCAL EDIT (pending upstream into califa-cards): README.md is a generated
+        # doc view of the skill, excluded like skill-card.md so it never enters the
+        # hashed or scanned surface. Without this, adding skills/<cat>/<name>/README.md
+        # moves every carded skill's content_hash. Re-vendoring will drop this line.
+        "README.md",
         ".DS_Store",
     }
 )
