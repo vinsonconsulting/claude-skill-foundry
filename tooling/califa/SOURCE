@@ -1,19 +1,22 @@
 Vendored from: vinsonconsulting/califa-cards
-Commit:        f975d4b9156fe6e6dd0bad39fcec3d892e48d476  (v0.6.2 + functional eval fixes)
-Vendored on:   2026-06-21
+Commit:        89d52f6a73f66151b6571f400e907c2a634cde7b  (v0.7.0)
+Tag:           v0.7.0
+Vendored on:   2026-06-22
 License:       Apache-2.0 (see ./LICENSE)
 
-Pin note: f975d4b is v0.6.2 (e6586a5) plus two eval-path fixes on branch
-fix/functional-eval-copy-references (pending its own PR/tag; update this pin to
-the merged SHA once that lands):
-  - functional eval copies a skill's `references/` (plural) into the eval
-    workspace, not only the singular `reference/`;
-  - `skillcard eval` logs per-task functional results so a miss is visible.
-Both are eval-path only and do not touch the card build/render/hash path.
+Pin note: 89d52f6 is the v0.7.0 release (merge of PR #10, "Skill-card v0.7.0:
+eval rate-limit resilience"). It supersedes the prior pin f975d4b (v0.6.2 plus
+two eval-path fixes on fix/functional-eval-copy-references) — those eval-path
+fixes are folded into v0.7.0's history. v0.7.0 adds the eval rate-limit
+resilience layer (new `skillcard/harness/reliability.py`: TokenBucket pacer +
+call_with_retry backoff/jitter + ReliabilityStats), the eval/optimize CLI knobs
+`--rate-limit` / `--max-retries` / `--task-timeout` / `--backoff-base` /
+`--backoff-cap`, and a terminal-failure-only integrity guard. All additive on
+the eval path; the card build/render/hash path is unchanged.
 
-This is a pinned copy of Califa's `schema/` + `skillcard/` packages (now
-including the `skillcard.harness` subpackage, dormant here — `make check` never
-runs `skillcard eval`), plus the Jinja template and pyproject, so the public
+This is a pinned copy of Califa's `schema/` + `skillcard/` packages (including
+the `skillcard.harness` subpackage, dormant here — `make check` never runs
+`skillcard eval`), plus the Jinja template and pyproject, so the public
 cabinet's `make check` can validate and gate skill cards without a private-repo
 CI secret.
 
