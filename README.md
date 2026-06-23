@@ -13,12 +13,12 @@
 [![validate](https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/actions/workflows/validate.yml)
 
 <!-- catalog (counts read from the skill cards by `make index`) -->
-[<!-- SKILLS-COUNT:START -->
-![6 skills](https://img.shields.io/badge/skills-6-2b7489)
-<!-- SKILLS-COUNT:END -->](#catalog)
-[<!-- SCANS:START -->
-![scans: 4/6 carded · worst MEDIUM](https://img.shields.io/static/v1?label=scans&message=4/6%20carded%20%C2%B7%20worst%20MEDIUM&color=yellow)
-<!-- SCANS:END -->](#catalog)
+<!-- SKILLS-COUNT:START -->
+[![6 skills](https://img.shields.io/badge/skills-6-2b7489)](#catalog)
+<!-- SKILLS-COUNT:END -->
+<!-- SCANS:START -->
+[![scans: 4/6 carded · worst MEDIUM](https://img.shields.io/static/v1?label=scans&message=4/6%20carded%20%C2%B7%20worst%20MEDIUM&color=yellow)](#catalog)
+<!-- SCANS:END -->
 
 <!-- meta -->
 [![license: MIT](https://img.shields.io/badge/license-MIT-2b7489)](LICENSE)
