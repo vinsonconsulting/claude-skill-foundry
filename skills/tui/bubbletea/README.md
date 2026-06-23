@@ -8,10 +8,12 @@ Build current Bubble Tea v2 terminal UIs in Go on the charm.land import paths â€
 
 <!-- card:begin badges -->
 
-[![scan: LOW (13/100)](https://img.shields.io/static/v1?label=scan&message=LOW%20%2813/100%29&color=brightgreen)](skill-card.md)
+[![scan](https://img.shields.io/endpoint?url=https%3A%2F%2Fpub-71c1a161b82140039deed518bba2d659.r2.dev%2Fbubbletea%2Fscan.json)](skill-card.md)
 ![status: beta](https://img.shields.io/static/v1?label=status&message=beta&color=blue)
-![card: v1.0](https://img.shields.io/static/v1?label=card&message=v1.0&color=555)
-![signing: hash](https://img.shields.io/static/v1?label=signing&message=hash&color=555)
+![trigger](https://img.shields.io/endpoint?url=https%3A%2F%2Fpub-71c1a161b82140039deed518bba2d659.r2.dev%2Fbubbletea%2Ftrigger.json)
+![tasks](https://img.shields.io/endpoint?url=https%3A%2F%2Fpub-71c1a161b82140039deed518bba2d659.r2.dev%2Fbubbletea%2Ftasks.json)
+![card](https://img.shields.io/endpoint?url=https%3A%2F%2Fpub-71c1a161b82140039deed518bba2d659.r2.dev%2Fbubbletea%2Fcard.json)
+![signed](https://img.shields.io/endpoint?url=https%3A%2F%2Fpub-71c1a161b82140039deed518bba2d659.r2.dev%2Fbubbletea%2Fsigned.json)
 
 <!-- card:end badges -->
 
