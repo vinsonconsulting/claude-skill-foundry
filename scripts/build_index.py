@@ -60,9 +60,17 @@ def render_index(rows: list[tuple[str, str, str, Path]]) -> str:
 
 
 def render_count_badge(n: int) -> str:
-    """A static shields.io badge for the live skill count."""
+    """A static shields.io badge for the live skill count, linked to the catalog.
+
+    The link is emitted here, inside the SKILLS-COUNT markers, rather than wrapped
+    around them in the README. GitHub's Markdown renderer treats the marker comment
+    lines as block-level HTML, which terminates any inline link whose text spans
+    them, so a wrapper placed around the markers renders as literal `](#catalog)`
+    text. Keeping the whole `[![…](…)](#catalog)` on one line avoids that.
+    """
     label = "skill" if n == 1 else "skills"
-    return f"![{n} {label}](https://img.shields.io/badge/skills-{n}-{COUNT_COLOR})"
+    img = f"![{n} {label}](https://img.shields.io/badge/skills-{n}-{COUNT_COLOR})"
+    return f"[{img}](#catalog)"
 
 
 def render_scans_badge(rows: list[tuple[str, str, str, Path]]) -> str:
@@ -70,8 +78,11 @@ def render_scans_badge(rows: list[tuple[str, str, str, Path]]) -> str:
     cards = [cardkit.load_card(d) for *_rest, d in rows]
     carded = [c for c in cards if c]
     order = ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    # href links the badge to the catalog. cardkit.shield emits the full
+    # [![…](…)](#catalog) on one line, so the SKILLS-COUNT/SCANS comment markers
+    # never land inside the link text (see render_count_badge for why that matters).
     if not carded:
-        return cardkit.shield("scans", "none carded", cardkit.DIM)
+        return cardkit.shield("scans", "none carded", cardkit.DIM, href="#catalog")
     worst = "LOW"
     for c in carded:
         sev = (c.get("scan") or {}).get("severity", "LOW")
@@ -80,7 +91,7 @@ def render_scans_badge(rows: list[tuple[str, str, str, Path]]) -> str:
     all_low = all((c.get("scan") or {}).get("severity") == "LOW" for c in carded)
     tail = "all LOW" if all_low else f"worst {worst}"
     msg = f"{len(carded)}/{len(rows)} carded · {tail}"
-    return cardkit.shield("scans", msg, cardkit.SEVERITY_COLOR.get(worst, cardkit.DIM))
+    return cardkit.shield("scans", msg, cardkit.SEVERITY_COLOR.get(worst, cardkit.DIM), href="#catalog")
 
 
 def replace_between(text: str, start: str, end: str, payload: str, *, required: bool) -> str:
