@@ -1,9 +1,4 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-    <img alt="Jim's Filing Cabinet of Claude Skills" src="assets/hero-light.svg" width="760">
-  </picture>
-</p>
+
 
 <h1 align="center">Jim's Filing Cabinet of Claude Skills</h1>
 
