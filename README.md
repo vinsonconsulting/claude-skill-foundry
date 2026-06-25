@@ -1,8 +1,8 @@
 
 
-<h1 align="center">Jim's Filing Cabinet of Claude Skills</h1>
+<h1 align="center">claude-skill-foundry</h1>
 
-<p align="center">A library of self-contained Claude skills you copy into your setup, each security-scanned and eval'ed.</p>
+<p align="center">A scoring harness for Claude Skills. Each carded skill ships a Skill Card: a SkillSpector security scan and trigger evals, generated and gated in CI so the catalog can't drift from what was measured.</p>
 
 <!-- build / CI -->
 [![validate](https://github.com/vinsonconsulting/claude-skill-foundry/actions/workflows/validate.yml/badge.svg)](https://github.com/vinsonconsulting/claude-skill-foundry/actions/workflows/validate.yml)
@@ -23,31 +23,87 @@
 
 ## What this is
 
-A skill is a folder. It holds a `SKILL.md` and whatever scripts, references, or
-assets that skill needs. Claude reads the description to decide when the skill
-applies, then follows the instructions inside. The folders carry no global state
-and no install step, so you copy one into your own setup and it works.
+This repo scores Claude Skills. Each carded skill ships a Skill Card that records
+how it scored: a SkillSpector security scan and a trigger eval, keyed to a content
+hash of the source. The catalog further down reads straight from those cards, so
+the numbers are generated rather than hand-typed, and the table cannot quietly
+drift away from the truth.
 
-This repo is a shelf of those folders. What makes it different is what rides along
-with each one: a Skill Card. Every skill ships a recorded SkillSpector security
-scan plus measured trigger metrics, and the catalog further down reads straight
-from those cards. The numbers in the table are not hand-typed marketing. They are
-generated, so the catalog cannot quietly drift away from the truth.
+New to skills? A skill is a folder. It holds a `SKILL.md` and whatever scripts,
+references, or assets that skill needs. Claude reads the description to decide when
+the skill applies, then follows the instructions inside. The folders carry no
+global state and no install step, so you copy one into your own setup and it works.
 
-The build pipeline that produces a skill, and the cards that record how it scored,
-sit lower down under [How these are built](#how-these-are-built). Start with the
-[Catalog](#catalog) if you just want to grab something.
+The six skills here are the corpus the scoring runs against. Start with the
+[Catalog](#catalog) to grab one, or read [How these are built](#how-these-are-built)
+for the pipeline that produces a card.
+
+## Reading the scores
+
+Every carded skill carries a SkillSpector security scan: a static pass over the
+skill's text surface, run with no model calls, scored from 0 to 100 where a higher
+number means more risk. The gate maps that score to a band.
+
+| Band | Score | Gate |
+| --- | --- | --- |
+| LOW | 0 to 20 | Passes. |
+| MEDIUM | 21 to 50 | Passes only if every finding is recorded on the card as `accepted` with a written note. |
+| HIGH | 51 to 80 | Hard fail. Does not merge. |
+| CRITICAL | 81 to 100 | Hard fail. Does not merge. |
+
+Lower is safer, and LOW is the cleanest result. Any single finding with CRITICAL
+severity fails the build on its own, whatever the total score.
+
+**Carded** means the skill ships a committed Skill Card: a `card.json` for the
+tooling and a human-readable `skill-card.md`, both keyed to a content hash of the
+source so the card always describes the exact bytes it was built from. The card
+format follows the [califa-cards](https://github.com/vinsonconsulting/califa-cards)
+SPEC. A skill with no card yet shows `—` in the catalog instead of a number.
+
+**Trigger (P/R)** is the measured precision and recall of a skill's triggering.
+The eval cases live in each card today; the published precision and recall numbers
+do not yet, so the column reads `—` for now.
+
+So the summary badge **`4/6 carded · worst MEDIUM`** reads like this: four of the
+six skills are carded, and the riskiest of those four sits at MEDIUM with its
+findings accepted and justified on the card. The other three are LOW. Two skills
+are not carded yet.
+
+## A worked card
+
+Here is what a scored skill looks like. `textual` builds and debugs Python TUIs
+with Textual 8.x.
+
+| Field | Value |
+| --- | --- |
+| Scan | LOW (0/100), no findings |
+| Permissions | shell, file (no network, env, or MCP) |
+| Dependencies | `textual>=8.2,<9`, `rich>=15.0`, `python>=3.9` |
+| Source | pinned to a `content_hash` of the skill folder |
+| Status | beta |
+
+The full card is at
+[`skills/tui/textual/skill-card.md`](skills/tui/textual/skill-card.md).
+
+A clean scan is the easy case. When the scanner does find something, the card has
+to account for it. `image-to-ascii` scores MEDIUM (39/100) on five findings, and
+every one is recorded as `accepted` with a written reason: one for the file read
+and write that are the converter's documented job, and four that match a legal
+phrase inside a bundled font license rather than any skill instruction. The MEDIUM
+band passes only because each finding is justified on the card, not waved through.
+See [`skills/ascii-art/image-to-ascii/skill-card.md`](skills/ascii-art/image-to-ascii/skill-card.md).
 
 ## What you get
 
 - **Portable folders.** Copy one into a skills directory and go. No package
   manager, no global config, nothing to undo later.
 - **A security scan on every skill, gated in CI.** SkillSpector runs against each
-  skill's text surface on every push. A HIGH or CRITICAL score fails the build.
-- **Measured triggering, not vibes.** Whether a skill actually fires on the
-  prompts it should is something you can measure, so it gets measured.
+  skill's text surface on every push, and the gate fails the build on a HIGH or
+  CRITICAL result. See [Reading the scores](#reading-the-scores) for the bands.
+- **Measured triggering, not vibes.** Whether a skill fires on the prompts it
+  should is something you can measure, so it gets measured.
 - **An honest catalog.** The `Scan` and `Trigger` columns are wired to the cards.
-  Nothing is carded yet shows a `—` rather than a made-up number.
+  A skill that is not carded yet shows a `—` rather than a made-up number.
 
 ## Quickstart
 
@@ -74,7 +130,8 @@ Each category links to its own index; each skill links to its page. `Scan` is th
 SkillSpector severity and score, and `Trigger (P/R)` is the measured precision and
 recall once a skill has published metrics. Both columns read from each skill's
 `card.json`, so a skill cannot claim a score it did not earn, and the table cannot
-go stale while the cards say otherwise.
+go stale while the cards say otherwise. See [Reading the scores](#reading-the-scores)
+to decode the bands and the `—` placeholders.
 
 <!-- SKILLS-INDEX:START -->
 
@@ -126,6 +183,18 @@ matches, which is the point: `make check` rebuilds each card from its committed
 inputs and fails if the result drifts from what is checked in.
 
 See a live example in the [`textual` skill card](skills/tui/textual/skill-card.md).
+
+## Built on
+
+- **Skill Card format and tooling.** The cards here conform to the
+  [califa-cards](https://github.com/vinsonconsulting/califa-cards) SPEC, an
+  Apache-2.0 standard for recording what a skill is and how it scored. The
+  `skillcard` CLI that builds, gates, and validates each card is vendored under
+  `tooling/califa/`.
+- **Security scanner.** [SkillSpector](https://github.com/NVIDIA/SkillSpector)
+  from NVIDIA, run static (`--no-llm`) on every push.
+
+califa-cards is the standard; this repo is one corpus that exercises it.
 
 ## Repo layout
 
