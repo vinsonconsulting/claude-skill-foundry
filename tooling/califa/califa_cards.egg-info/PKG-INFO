@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: califa-cards
-Version: 0.8.0
+Version: 0.9.0
 Summary: Califa Cards: A Comprehensive Skill Card Standard and Testing Framework
 Author: Vinson Consulting
 License: Apache-2.0
@@ -16,4 +16,6 @@ Requires-Dist: ruff>=0.5; extra == "dev"
 Requires-Dist: pytest>=8; extra == "dev"
 Provides-Extra: scan
 Requires-Dist: skillspector @ git+https://github.com/NVIDIA/SkillSpector@a5092dd9b9521ff57a9b53612bb129ce78019002 ; extra == "scan"
+Provides-Extra: scorecard
+Requires-Dist: textual==8.2.7; extra == "scorecard"
 Dynamic: license-file
