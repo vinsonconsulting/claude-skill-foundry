@@ -8,3 +8,6 @@ pytest>=8
 
 [scan]
 skillspector @ git+https://github.com/NVIDIA/SkillSpector@a5092dd9b9521ff57a9b53612bb129ce78019002
+
+[scorecard]
+textual==8.2.7
