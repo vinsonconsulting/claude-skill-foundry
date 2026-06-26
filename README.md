@@ -278,3 +278,7 @@ the scoring bands, and how to report a vulnerable or malicious skill are in
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) to add or change a skill. Released under the
 Apache-2.0 license; see [LICENSE](LICENSE).
+
+---
+
+<p align="center"><img src="assets/forge-footer.jpg" alt="A foundry floor: a lone worker and a glowing crucible in a dim industrial hall" width="100%"></p>
