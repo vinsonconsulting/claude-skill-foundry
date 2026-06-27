@@ -55,7 +55,7 @@ QUALITY_LEGEND = [("≥ 0.90", 0.95), ("≥ 0.80", 0.85), ("≥ 0.70", 0.75),
 # --- the card -----------------------------------------------------------------
 
 CARD: dict[str, Any] = {
-    "title": "SKILL CARD",
+    "title": "EXAMPLE SKILL CARD: textual",
     "name": "textual",
     "version": "1.2.0",
     "status": "stable",

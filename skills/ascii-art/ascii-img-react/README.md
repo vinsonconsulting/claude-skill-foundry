@@ -72,3 +72,7 @@ _Skill card pending. This skill ships a `SKILL.md` but has no published `card.js
 
 The card files (`card.json`, `skill-card.md`, `report.sarif`) appear once this
 skill is carded.
+
+## Credits
+
+Built for **[ascii-img-react](https://github.com/mrmartineau/ascii-img-react)** by Zander Martineau — an independent skill, not affiliated with the author. The shape-vector technique is informed by **[Alex Harri's ASCII-rendering article](https://alexharri.com/blog/ascii-rendering)**.

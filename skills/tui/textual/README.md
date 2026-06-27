@@ -102,3 +102,9 @@ Quality metrics are not published yet (status: beta). The security scan is LOW (
 - [`skill-card.md`](skill-card.md): the card in human-readable form.
 - [`card.json`](card.json): the card in machine form.
 - [`scan.json`](scan.json): the SkillSpector scan and findings.
+
+## Credits
+
+Built for **[Textual](https://github.com/Textualize/textual)** by Textualize ([docs](https://textual.textualize.io)) — an independent skill, not affiliated with the project.
+
+[![Sponsor Textual](https://img.shields.io/badge/sponsor-Textual-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/willmcgugan)

@@ -102,3 +102,10 @@ Quality metrics are not published yet (status: beta). The security scan is LOW (
 - [`skill-card.md`](skill-card.md): the card in human-readable form.
 - [`card.json`](card.json): the card in machine form.
 - [`scan.json`](scan.json): the SkillSpector scan and findings.
+
+## Credits
+
+Built for **[Ratatui](https://github.com/ratatui/ratatui)** ([ratatui.rs](https://ratatui.rs)) — an independent skill, not affiliated with the project.
+
+[![Sponsor Ratatui](https://img.shields.io/badge/sponsor-Ratatui-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/ratatui)
+[![Open Collective](https://img.shields.io/badge/Open%20Collective-Ratatui-7FADF2?logo=opencollective&logoColor=white)](https://opencollective.com/ratatui)

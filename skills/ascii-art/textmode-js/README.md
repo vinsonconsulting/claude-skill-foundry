@@ -72,3 +72,10 @@ _Skill card pending. This skill ships a `SKILL.md` but has no published `card.js
 
 The card files (`card.json`, `skill-card.md`, `report.sarif`) appear once this
 skill is carded.
+
+## Credits
+
+Built for **[textmode.js](https://github.com/humanbydefinition/textmode.js)** ([code.textmode.art](https://code.textmode.art)) — an independent skill, not affiliated with the project.
+
+[![Sponsor textmode.js](https://img.shields.io/badge/sponsor-textmode.js-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/humanbydefinition)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-support-ff5e5b?logo=kofi&logoColor=white)](https://ko-fi.com/humanbydefinition)

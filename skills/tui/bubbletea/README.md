@@ -104,3 +104,7 @@ Quality metrics are not published yet (status: beta). The security scan is LOW (
 - [`skill-card.md`](skill-card.md): the card in human-readable form.
 - [`card.json`](card.json): the card in machine form.
 - [`scan.json`](scan.json): the SkillSpector scan and findings.
+
+## Credits
+
+Built for **[Bubble Tea](https://github.com/charmbracelet/bubbletea)** by Charm ([charm.sh](https://charm.sh)) — an independent skill, not affiliated with Charm.

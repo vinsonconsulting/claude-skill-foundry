@@ -92,3 +92,7 @@ and [`scan.json`](scan.json) for the notes on each one.
 - [`skill-card.md`](skill-card.md): the card in human-readable form.
 - [`card.json`](card.json): the card in machine form.
 - [`scan.json`](scan.json): the SkillSpector scan and findings.
+
+## Credits
+
+`image-to-ascii` is an original skill in this repo. It bundles **[DejaVu Sans Mono](https://dejavu-fonts.github.io/)** (license in [`assets/DejaVuSansMono-LICENSE.txt`](assets/DejaVuSansMono-LICENSE.txt)), and its shape-vector glyph matching is informed by **[Alex Harri's ASCII-rendering article](https://alexharri.com/blog/ascii-rendering)**.
